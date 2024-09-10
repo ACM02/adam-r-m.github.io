@@ -1,0 +1,265 @@
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    /*border: 1px solid #ccc;*/
+    /*background-color: #f1f1f1;*/
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    /*background-color: #ddd;*/
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    /*background-color: #ccc;*/
+    font-weight: bold;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    /*border: 1px solid #ccc;*/
+    border-top: none;
+   /* max-width: 800px;*/
+}
+
+
+
+
+/*The typical way to include some custom font. Note that for the most
+              cases you only need the "regular" version of the font, as each browser can extend
+              upon it to create bold and italic versions automatically*/
+@font-face {
+    /*How you want this font to be named. Can be anything*/
+    font-family: "Inconsolata";
+    /*The path to the font file, relative to the file with the styling (currently it's this file: index.html)*/
+    src: url('./fonts/Inconsolata-Regular.ttf');
+}
+
+/*The same structure follows here*/
+/*For better web-page load times I suggest to only leave one of the "main-text" fonts in here.
+             (ie: either Radley or SourceSerifPro, not both)*/
+
+@font-face {
+    font-family: "type";
+    src: url('./fonts/CourierPrime-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Ubuntu";
+    src: url('./fonts/UbuntuMono-Regular.ttf');
+}
+
+/*The same structure follows here*/
+@font-face {
+    font-family: "Garamond";
+    src: url('./fonts/EBGaramond-Regular.ttf');
+}
+
+/*The styling of the asterisk "tag" means that this styling will be applied to all of the
+             tags on the page. Every p, a, h1-h6, div, body, etc will have this style*/
+* {
+    /*So we want all text on the page to be displayed with some
+specific font. We usea
+                 the name of the font we have included above in this property to set the custom font*/
+    font-family: "Garamond";
+    font-size: 14pt;
+    /*font-family: "Radley"; */
+}
+
+/*And now we set specific font styling for all h1 elements (the main heading on the web page)*/
+h1 {
+    font-size: 32pt;
+    color: #656565;
+}
+
+h2 {
+    font-size: 20pt;
+}
+
+
+a {
+    text-decoration: none;
+    color: #4D5B5A;
+}
+
+h3 {
+    font-size: 15pt;
+}
+
+
+a {
+    text-decoration: none;
+    color: #4D5B5A;
+}
+
+
+
+
+/*The tooltip is structured like <span class="tooltip">icon<span class="tooltiptext">the text</span></span>
+              This would set the style of "icon" text (which is usually a &#9156; symbol)*/
+.tooltip {
+    /*To distinguish this symbol we set it to have some dotted border at the bottom:
+                 first set its weight (1px), then pattern (dotted), then color (black)*/
+    border-bottom: 1px;
+    /*To distinguish this symbol even more we set it to look bold*/
+
+}
+
+/*This is the code you add to include the tooltip/abstract box: 
+	 <span class="tooltip">&#9156;<span class="tooltiptext">
+	This is about.... </span></span> */
+
+
+
+
+/*We are getting into the weird territory of CSS. This combination of selectors can be read as:
+             "for a tooltip that currently has mouse cursor over it, set the visibility property of its
+             child element with class tooltiptext to visible"
+             This does make sense, because <span class="tooltiptext"></span> in our structure (example above) is
+             always inside of <span class="tooltip">...</span>, which makes the former element to be the child
+             of the latter element*/
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/*Now we style the text of the tooltip*/
+.tooltiptext {
+    /*Setting font-weight to normal, because otherwise it would be bold, since in our structure of the
+                 tooltip <span class="tooltiptext"></span> is a child of <span class="tooltip">...</span>, which would
+                 inherit the bold font-weight from .tooltip*/
+    font-weight: normal;
+
+    /*We also set the font-size to be slightly smaller than the main text on the page for breaking contrast*/
+    font-size: 10pt;
+
+    /*Optional: instead of aligning text to the left as we do by default, make it justified to the width*/
+    text-align: justify;
+
+    /*We set the border around the tooltiptext to break the contrast again. The order of parameters is the same
+                 as for the border-bottom example above*/
+    border: 2px solid black;
+
+    /*By default we make the tooltiptext invisible, since we want it to show only when the mouse is hovered
+                 on the tooltip*/
+    visibility: hidden;
+
+    /*Set background color explicitly, since otherwise it would be transparent*/
+    background-color: rgb(211, 211, 211);
+
+    /*z-index can be thought of as a property that describes the layering of elements.
+                 Elements with higher z-index will be drawn in front of the ones with lower z-index*/
+    z-index: 1;
+
+    /*These require more detailed explanations*/
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    width: (100% - 20px);
+}
+
+.page {
+    /*sets the width of the current tag (div.page) to be 80% of body*/
+    width: 80%;
+    padding-left: 30px;
+}
+
+.column {
+    /*This new change also requires more detailed explanations*/
+    position: relative;
+
+    /*sets the current tag (div.column) to display inline i.e: the tags with this
+                 property (all div.column) will be positioned horizontally, rather than vertically*/
+    display: inline-block;
+
+    /*sets the content of this tag (div.column) to start at the top of the block, otherwise
+                 it would start from the bottom*/
+    vertical-align: top;
+
+    /*Makes a small margin (30px) on the right of the column*/
+    margin-right: 40px;
+
+    /*sets the width of the current tag (div.column) to be 42.5% of its parent tag (div.page) width*/
+    width: 42.5%;
+}
+
+/*When the screen width is less than 710px on any device (narrow page)*/
+@media (max-width: 710px) {
+    .page {
+        /* Our page layout is basically a single-column, so we want the page to cover the 100%
+                     width of the screen*/
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .column {
+        /*We reset a bunch of properties, that were used on the desktop
+                     version, but are not required on the mobile. Plus we set the with
+                     of the column to 90% of the .page div*/
+        display: block;
+        width: 70%;
+
+        /*Using these two properties, we can align .column relative to .page
+                     so that it has equal margins on left and right (ie: it is centerd in .page)*/
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /*Since the page's title is not a part of the column, we need to align it separately*/
+    h1 {
+        text-align: center;
+    }
+}
+
+.cvbutton {
+    color: black;
+}
+
+.pic {
+    width: 95%;
+    height: 80%;
+    padding-left: 0px;
+    image-orientation: from-image;
+}
+
+.pic2 {
+    width: 30%;
+    height: 30%;
+    padding-left: 0px;
+    image-orientation: from-image;
+
+    .wrapper {
+        width: 100%;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    .container.space-around {
+        width: 60%;
+        padding-left: 0px;
+        /*justify-left */
+        justify-content: space-around;
+
+    }
+
+    .container.space-between {
+        width: 80%;
+        justify-content: space-between;
+    }
+}
