@@ -15,6 +15,10 @@
     font-size: 17px;
 }
 
+.tab .firsttablink {
+    padding-left: 0px;
+}
+
 
 /*The typical way to include some custom font. Note that for the most
               cases you only need the "regular" version of the font, as each browser can extend
